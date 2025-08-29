@@ -39,5 +39,5 @@ jobs:
           echo "Stack services:"
           docker stack services wazuh-swarm
           echo "Stack tasks:"
-          docker stack ps wazuh-swarm
+          docker service ls
 
