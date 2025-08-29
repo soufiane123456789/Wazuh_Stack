@@ -40,4 +40,5 @@ jobs:
           docker stack services wazuh-swarm
           echo "Stack tasks:"
           docker service ls
+#1
 
