@@ -1,0 +1,43 @@
+name: CI/CD Wazuh Stack
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ci:
+    name: CI - Validate configuration
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Validate Wazuh config YAMLs
+        run: |
+          set -e
+          for file in $(find config -type f -name "*.yml"); do
+            echo "Checking $file..."
+            python3 -c "import yaml, sys; yaml.safe_load(open('$file'))" || exit 1
+          done
+
+  cd:
+    name: CD - Deploy to Docker Swarm
+    runs-on: self-hosted
+    needs: ci
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Deploy Wazuh stack
+        run: |
+          echo "Deploying Wazuh stack on Docker Swarm..."
+          docker stack deploy -c stack.yml wazuh-swarm
+
+      - name: Show stack status
+        run: |
+          echo "Stack services:"
+          docker stack services wazuh-swarm
+          echo "Stack tasks:"
+          docker stack ps wazuh-swarm
+
