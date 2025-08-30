@@ -32,7 +32,7 @@ jobs:
       - name: Deploy Wazuh stack
         run: |
           echo "Deploying Wazuh stack on Docker Swarm..."
-          docker stack deploy -c stack.yml wazuh-swarm
+          docker stack deploy -c stack.yml wazuh
 
       - name: Show stack status
         run: |
