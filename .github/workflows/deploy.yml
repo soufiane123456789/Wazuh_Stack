@@ -37,7 +37,7 @@ jobs:
       - name: Show stack status
         run: |
           echo "Stack services:"
-          docker stack services wazuh-swarm
+          docker stack services wazuh
           echo "Stack tasks:"
           docker service ls
 #1
