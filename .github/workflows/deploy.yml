@@ -7,22 +7,48 @@ on:
 
 jobs:
   ci:
-    name: CI - Validate configuration
+    name: CI - Validate Wazuh Stack
     runs-on: self-hosted
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Validate Wazuh config YAMLs
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install yamllint
         run: |
+          pip install yamllint
+
+      - name: Validate YAML files
+        run: |
+          echo "[INFO] Starting YAML validation at $(date)"
           set -e
+          error=0
+
+          # Lint YAML files
           for file in $(find config -type f -name "*.yml"); do
-            echo "Checking $file..."
-            python3 -c "import yaml, sys; yaml.safe_load(open('$file'))" || exit 1
+            echo "[INFO] Linting $file..."
+            yamllint "$file" || error=1
           done
 
+          # Python parse check
+          for file in $(find config -type f -name "*.yml"); do
+            echo "[INFO] Parsing $file..."
+            python3 -c "import yaml; yaml.safe_load(open('$file'))" || error=1
+          done
+
+          if [ $error -eq 1 ]; then
+            echo "❌ YAML validation failed. Fix the errors above."
+            exit 1
+          else
+            echo "✅ All YAML files are valid and well-formed."
+          fi
+
   cd:
-    name: CD - Deploy to Docker Swarm
+    name: CD - Deploy Wazuh Stack
     runs-on: self-hosted
     needs: ci
     steps:
@@ -31,14 +57,8 @@ jobs:
 
       - name: Deploy Wazuh stack
         run: |
-          echo "Deploying Wazuh stack on Docker Swarm..."
+          echo "[INFO] Deploying Wazuh stack on Docker Swarm at $(date)..."
+          set -e
           docker stack deploy -c stack.yml wazuh
-
-      - name: Show stack status
-        run: |
-          echo "Stack services:"
-          docker stack services wazuh
-          echo "Stack tasks:"
-          docker service ls
-#1
+          echo "[SUCCESS] Wazuh stack deployed successfully!"
 
