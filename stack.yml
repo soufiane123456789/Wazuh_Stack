@@ -42,6 +42,8 @@ services:
       - ./config/wazuh_indexer_ssl_certs/wazuh.master.pem:/etc/ssl/filebeat.pem
       - ./config/wazuh_indexer_ssl_certs/wazuh.master-key.pem:/etc/ssl/filebeat.key
       - ./config/wazuh_cluster/wazuh_manager.conf:/wazuh-config-mount/etc/ossec.conf
+      - ./config/wazuh_rules/0999-local_ssh_rules.xml:/var/ossec/ruleset/rules/0999-local_ssh_rules.xml
+
     networks:
       - wazuh-net
     deploy:
