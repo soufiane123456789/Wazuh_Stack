@@ -1,0 +1,20 @@
+<!--
+  - Local SSH custom decoders
+  - Author: YourName
+  - Purpose: Decode SSH failed and successful login events
+-->
+
+<decoder name="local_ssh_failed_login">
+  <program_name>sshd</program_name>
+  <prematch>Failed password</prematch>
+  <regex>^Failed password for (invalid user )?(\S+) from (\S+) port \d+ ssh2$</regex>
+  <order>user, srcip</order>
+</decoder>
+
+<decoder name="local_ssh_success_login">
+  <program_name>sshd</program_name>
+  <prematch>Accepted password</prematch>
+  <regex>^Accepted password for (\S+) from (\S+) port \d+ ssh2$</regex>
+  <order>user, srcip</order>
+</decoder>
+

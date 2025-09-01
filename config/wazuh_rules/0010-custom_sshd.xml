@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group name="disable_sshd_rules">
+
+  <!-- Désactivation de toutes les règles originales 0095-sshd_rules.xml -->
+  
+  <rule id="5700" level="0" />
+  <rule id="5701" level="0" />
+  <rule id="5702" level="0" />
+  <rule id="5703" level="0" />
+  <rule id="5704" level="0" />
+  <rule id="5705" level="0" />
+  <rule id="5706" level="0" />
+  <rule id="5707" level="0" />
+  <rule id="5709" level="0" />
+  <rule id="5710" level="0" />
+  <rule id="5711" level="0" />
+  <rule id="5712" level="0" />
+  <rule id="5713" level="0" />
+  <rule id="5714" level="0" />
+  <rule id="5715" level="0" />
+  <rule id="5716" level="0" />
+  <rule id="5717" level="0" />
+  <rule id="5718" level="0" />
+  <rule id="5719" level="0" />
+  <rule id="5720" level="0" />
+  <rule id="5721" level="0" />
+  <rule id="5722" level="0" />
+  <rule id="5723" level="0" />
+  <rule id="5724" level="0" />
+  <rule id="5725" level="0" />
+  <rule id="5726" level="0" />
+  <rule id="5727" level="0" />
+  <rule id="5728" level="0" />
+  <rule id="5729" level="0" />
+  <rule id="5730" level="0" />
+  <rule id="5731" level="0" />
+  <rule id="5732" level="0" />
+  <rule id="5733" level="0" />
+  <rule id="5734" level="0" />
+  <rule id="5735" level="0" />
+  <rule id="5736" level="0" />
+  <rule id="5737" level="0" />
+  <rule id="5738" level="0" />
+  <rule id="5739" level="0" />
+  <rule id="5740" level="0" />
+  <rule id="5741" level="0" />
+  <rule id="5742" level="0" />
+  <rule id="5743" level="0" />
+  <rule id="5744" level="0" />
+  <rule id="5745" level="0" />
+  <rule id="5746" level="0" />
+  <rule id="5747" level="0" />
+  <rule id="5748" level="0" />
+  <rule id="5749" level="0" />
+  <rule id="5750" level="0" />
+  <rule id="5751" level="0" />
+  <rule id="5752" level="0" />
+  <rule id="5753" level="0" />
+  <rule id="5754" level="0" />
+  <rule id="5755" level="0" />
+  <rule id="5756" level="0" />
+  <rule id="5757" level="0" />
+  <rule id="5758" level="0" />
+  <rule id="5759" level="0" />
+  <rule id="5760" level="0" />
+  <rule id="5761" level="0" />
+  <rule id="5762" level="0" />
+  <rule id="5763" level="0" />
+
+</group>
+

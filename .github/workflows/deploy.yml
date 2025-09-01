@@ -19,12 +19,35 @@ jobs:
           for file in $(find config -type f -name "*.yml"); do
             echo "Checking $file..."
             python3 -c "import yaml, sys; yaml.safe_load(open('$file'))" || exit 1
+
+  trivy:
+    name: Security Scan - Trivy
+    runs-on: self-hosted
+    needs: ci
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Create reports folder
+        run: mkdir -p ./trivy-reports
+
+      - name: Scan Wazuh images with Trivy
+        run: |
+          for img in wazuh/wazuh-manager:4.12.0 wazuh/wazuh-dashboard:4.12.0 wazuh/wazuh-indexer:4.12.0; do
+            echo "Scanning $img ..."
+            trivy image --scanners vuln --severity HIGH,CRITICAL -f json -o ./trivy-reports/$(echo $img | tr '/' '-' | tr ':' '-')-report.json $img || true
           done
+
+      - name: Upload Trivy reports as artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: trivy-reports
+          path: ./trivy-reports/
 
   cd:
     name: CD - Deploy to Docker Swarm
     runs-on: self-hosted
-    needs: ci
+    needs: trivy
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
