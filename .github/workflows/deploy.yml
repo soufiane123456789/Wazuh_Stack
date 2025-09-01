@@ -16,14 +16,10 @@ jobs:
       - name: Validate Wazuh config YAMLs
         run: |
           set -e
-          python3 - << 'EOF'
-import yaml, glob, sys
-
-for file in glob.glob("config/**/*.yml", recursive=True):
-    print(f"Checking {file}...")
-    with open(file) as f:
-        yaml.safe_load(f)
-EOF
+          for file in $(find config -type f -name "*.yml"); do
+            echo "Checking $file..."
+            python3 -c "import yaml, sys; yaml.safe_load(open(\"$file\"))" || exit 1
+          done
 
   trivy:
     name: Security Scan - Trivy
