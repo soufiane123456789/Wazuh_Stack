@@ -16,7 +16,7 @@ jobs:
       - name: Validate Wazuh config YAMLs
         run: |
           set -e
-          python3 << EOF
+          python3 - << 'EOF'
 import yaml, glob, sys
 
 for file in glob.glob("config/**/*.yml", recursive=True):
