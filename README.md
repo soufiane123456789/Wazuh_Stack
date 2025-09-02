@@ -25,6 +25,7 @@ Les diagrammes d'architecture, qui illustrent l'ensemble du flux de déploiement
 Le dépôt est organisé de manière claire pour faciliter la navigation :
 
 
+```
 wazuh_Stack/
 ├── .github/workflows/       # Fichiers de configuration du pipeline CI/CD (GitHub Actions).
 ├── Architecture/            # Diagrammes d'architecture et aperçus du design.
@@ -36,4 +37,5 @@ wazuh_Stack/
 ├── Report.pdf               # Le rapport détaillé du projet.
 ├── generate-indexer-certs.yml # Script pour la génération des certificats d'indexeur.
 └── stack.yml                # Fichier de déploiement Docker Swarm.
+```
 
