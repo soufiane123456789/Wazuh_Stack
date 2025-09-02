@@ -2,7 +2,8 @@ Structure du Dépôt
 Le dépôt est organisé de manière claire pour faciliter la navigation :
 -----
 
-# Défi Technique Cires Technologies - Mini SOC
+# DevOps and Cybersecurity: Building a Scalable Mini SOC
+
 
 Ce dépôt contient la solution complète pour le défi technique du poste de **SOC Architect / DevOps Engineer** chez Cires Technologies.
 
@@ -23,13 +24,16 @@ Les diagrammes d'architecture, qui illustrent l'ensemble du flux de déploiement
 
 Le dépôt est organisé de manière claire pour faciliter la navigation :
 
-```
+
 wazuh_Stack/
-├── config/              # Fichiers de configuration pour les services Wazuh, Nginx et les règles.
-│   └── wazuh_rules/     # Décodeurs et règles de détection Wazuh personnalisés.
-├── Architecture/        # Diagrammes d'architecture et aperçus du design.
-├── Images/              # Captures d'écran du pipeline, des rapports Trivy et des alertes Wazuh.
-├── .github/workflows/   # Fichiers de configuration du pipeline CI/CD (GitHub Actions).
-├── README.md            # Ce fichier.
-└── stack.yml            # Fichier de déploiement Docker Swarm.
-```
+├── .github/workflows/       # Fichiers de configuration du pipeline CI/CD (GitHub Actions).
+├── Architecture/            # Diagrammes d'architecture et aperçus du design.
+├── Images/                  # Captures d'écran du pipeline, des alertes Wazuh et des dashboards personnalisés.
+├── Trivy-Reports/           # Rapports de scan de vulnérabilités Trivy.
+├── config/                  # Fichiers de configuration pour les services Wazuh, Nginx et les règles.
+│   └── wazuh_rules/             # Décodeurs et règles de détection Wazuh personnalisés.
+├── README.md                # Ce fichier.
+├── Report.pdf               # Le rapport détaillé du projet.
+├── generate-indexer-certs.yml # Script pour la génération des certificats d'indexeur.
+└── stack.yml                # Fichier de déploiement Docker Swarm.
+
