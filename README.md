@@ -5,7 +5,7 @@ Le dépôt est organisé de manière claire pour faciliter la navigation :
 # DevOps and Cybersecurity: Building a Scalable Mini SOC
 
 
-Ce dépôt contient la solution complète pour le défi technique du poste de **SOC Architect / DevOps Engineer** chez Cires Technologies.
+Ce dépôt contient la solution complète pour un projet de SOC Architect / DevOps Engineer.
 
 ## Aperçu du Projet
 
